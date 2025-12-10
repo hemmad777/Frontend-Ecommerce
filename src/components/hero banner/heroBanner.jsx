@@ -1,12 +1,16 @@
 import "./heroBanner.css"
 
-function heroBanner(){
+function HeroBanner(){
+    return(
     <>
     {/* Section hero banner */ }
     <section>
-        <div className="bg-black text-white ">
-        <h1>Welcome <span>AR</span> <span>SHOPEE</span></h1>
+        <div className="flex justify-center items-center bg-black text-white w-full h-60 ">
+        <h1>Welcome <span className="text-red-600">AR</span> <span>SHOPEE</span></h1>
         </div>
     </section>
     </>
+    )
 }
+
+export default HeroBanner;
