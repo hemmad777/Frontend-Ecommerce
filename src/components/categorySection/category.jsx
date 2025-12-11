@@ -1,22 +1,30 @@
+import { useEffect, useState } from 'react';
 import './category.css';
 
-function Category({categories}){
+function Category(){
 
-    const category=async(e)=>{
-        e.preventDefault();
+    const [categoryList, setCategoryList]=useState([]);
+    const fetchCategory=async()=>{
 
-        const res =await fetch 
+        const res =await fetch("http://localhost:3005/admin/categories");
+        const data=await res.json();
+        setCategoryList(data.categories);
     }
+
+
+    useEffect(()=>{
+        fetchCategory();
+    },[])
 
     return(
         <>
-        <div className='cat-wrapper'>
-            <h2 className='cat-title'>Categories</h2>
+        <div className='w-full'>
+            <h2 className=''>Categories</h2>
 
-            <div className='cat-list'>
-                {categories?.map((item)=>(
-                    <div className='cat-card' key={item.id}>
-                        <img src="item.image" alt="item.name" />
+            <div className='cat-list grid grid-cols-3 round-full'>
+                {categoryList?.map((item)=>(
+                    <div className='cat-card' key={item._id}>
+                        <img className='w-full ' src={`http://localhost:3005/${item.image}`} alt={item.name} />
                         <h4>{item.name}</h4>
                     </div>
                 ))}
