@@ -8,7 +8,7 @@ function Category(){
 
         const res =await fetch("http://localhost:3005/admin/categories");
         const data=await res.json();
-        setCategoryList(data.categories);
+        setCategoryList(data.categories); 
     }
 
 
